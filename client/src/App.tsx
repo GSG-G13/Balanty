@@ -1,10 +1,15 @@
 import { ReactElement } from 'react';
-import HeroSection from './components/hero/HeroSection';
-
-import './App.css';
+import './index.css';
+import { ThemeProvider } from '@emotion/react';
+import RootLayout from './layouts/RootLayout';
+import LightTheme from './themes';
 
 const App = (): ReactElement => {
-  return <HeroSection />;
+  return (
+    <ThemeProvider theme={LightTheme}>
+      <RootLayout />
+    </ThemeProvider>
+  );
 };
 
 export default App;
