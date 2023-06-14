@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import Hero from './Hero';
-import { HeroSectionWrapper } from './HeroSection.styles';
+import { HeroSectionWrapper } from './HeroSection.styled';
 
 const HeroSection: FC = () => {
   return (
