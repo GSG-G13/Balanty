@@ -1,20 +1,14 @@
 import React, { FC } from 'react';
-import {
-  Description,
-  DescriptionWrap,
-  JoinButton,
-  Title,
-} from './HeroSection.styles';
+import { Description, DescriptionWrap, Title } from './HeroSection.styled';
 
 interface Props {
   title: string;
   description: string;
-  type: string;
 }
 
-const HeroDescription: FC<Props> = ({ title, description, type }) => {
+const HeroDescription: FC<Props> = ({ title, description }) => {
   return (
-    <DescriptionWrap>
+    <DescriptionWrap className="description-wrap">
       <Title>{title}</Title>
       <Description>{description}</Description>
     </DescriptionWrap>
