@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
+import React, { FC, ReactElement } from 'react';
 import Hero from './Hero';
 import { HeroSectionWrapper } from './HeroSection.styled';
 
-const HeroSection: FC = () => {
+const HeroSection: FC = (): ReactElement => {
   return (
     <HeroSectionWrapper>
       <Hero

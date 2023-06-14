@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactElement } from 'react';
 import { Description, DescriptionWrap, Title } from './HeroSection.styled';
 
 interface Props {
@@ -6,7 +6,7 @@ interface Props {
   description: string;
 }
 
-const HeroDescription: FC<Props> = ({ title, description }) => {
+const HeroDescription: FC<Props> = ({ title, description }): ReactElement => {
   return (
     <DescriptionWrap className="description-wrap">
       <Title>{title}</Title>

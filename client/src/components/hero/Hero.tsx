@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactElement } from 'react';
 import { JoinButton, Wrapper } from './HeroSection.styled';
 import HeroDescription from './HeroDescription';
 
@@ -7,7 +7,7 @@ interface Props {
   type: string;
 }
 
-const Hero: FC<Props> = ({ image, type }) => {
+const Hero: FC<Props> = ({ image, type }): ReactElement => {
   return (
     <Wrapper imageUrl={image}>
       {type === 'ملعب' && (
