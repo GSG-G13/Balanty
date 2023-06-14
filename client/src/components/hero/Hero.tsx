@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { JoinButton, Wrapper } from './HeroSection.styles';
+import { JoinButton, Wrapper } from './HeroSection.styled';
 import HeroDescription from './HeroDescription';
 
 interface Props {
