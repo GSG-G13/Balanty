@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 export const HeroSectionWrapper = styled(Box)`
   display: flex;
