@@ -1,57 +1,57 @@
 import styled from '@emotion/styled';
+import { Box, Button, Typography } from '@mui/material';
 
-export const HeroSectionWrapper = styled('section')`
+export const HeroSectionWrapper = styled(Box)`
   display: flex;
-  align-items: center;
   height: 80vh;
   width: 100vw;
 `;
 
-export const JoinButton = styled('button')`
-  padding: 0.7rem 1.2rem;
-  border: 2px solid #fff;
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
-  background: transparent;
-  width: fit-content;
-  display: block;
-  position: absolute;
-  bottom: 70px;
-  right: 120px;
-  transform: translateX(-50%);
-  overflow: hidden;
-  z-index: 99;
-  cursor: pointer;
+// export const JoinButton = styled(Button)`
+  
+//   /* padding: 0.7rem 1.2rem; */
+//   /* border: 2px solid #fff; */
+//   /* color: #fff; */
+//   /* font-size: 1.1rem; */
+//   /* font-weight: bold; */
+//   /* font-family: Arial, Helvetica, sans-serif; */
+//   /* background: transparent; */
+//   /* width: fit-content; */
+//   /* display: block; */
+//   /* position: absolute;
+//   bottom: 70px;
+//   right: 120px;
+//   transform: translateX(-50%); */
+//   overflow: hidden;
+//   z-index: 99;
+//   cursor: pointer;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    transition: 0.2s linear;
-    background-color: #000;
-    opacity: 0.5;
-    z-index: -2;
-  }
-  &:hover {
-    color: #fff;
-  }
-  &:hover::before {
-    left: 0;
-  }
-`;
+//   &::before {
+//     content: '';
+//     position: absolute;
+//     top: 0;
+//     left: -100%;
+//     width: 100%;
+//     height: 100%;
+//     transition: 0.2s linear;
+//     background-color: #000;
+//     opacity: 0.5;
+//     z-index: -2;
+//   }
+//   &:hover {
+//     color: #fff;
+//   }
+//   &:hover::before {
+//     left: 0;
+//   }
+// `;
 
-export const DescriptionWrap = styled('div')`
+export const DescriptionWrap = styled(Box)`
   width: 50%;
   min-width: 250px;
   position: absolute;
   top: 20px;
   right: 50px;
-  /* display: flex; */
   flex-direction: column;
   align-items: right;
   justify-content: space-between;
@@ -62,7 +62,7 @@ export const DescriptionWrap = styled('div')`
   display: none;
 `;
 
-export const Title = styled('h3')`
+export const Title = styled(Typography)`
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
@@ -71,7 +71,7 @@ export const Title = styled('h3')`
   direction: rtl;
 `;
 
-export const Description = styled('p')`
+export const Description = styled(Typography)`
   font-size: 1rem;
   color: #fff;
   line-height: 1.6;
@@ -81,7 +81,7 @@ export const Description = styled('p')`
 interface Props {
   imageUrl: string;
 }
-export const Wrapper = styled('div')<Props>({
+export const Wrapper = styled(Typography)<Props>({
   width: '100%',
   height: '100%',
   cursor: 'pointer',

@@ -1,4 +1,5 @@
 import React, { FC, ReactElement } from 'react';
+import { Button } from '@mui/material';
 import { JoinButton, Wrapper } from './HeroSection.styled';
 import HeroDescription from './HeroDescription';
 
@@ -22,7 +23,19 @@ const Hero: FC<Props> = ({ image, type }): ReactElement => {
           description="ملعب ملعب ملعب ملعب ملعب ملعب ملعب ملعب ملعب ملعب ملعب ملعب"
         />
       )}
-      <JoinButton>إنضم ك{type}</JoinButton>
+      <Button
+        variant="outlined"
+        sx={{
+          color: '#fff',
+          borderColor: '#fff',
+          position: 'absolute',
+          bottom: '70px',
+          right: '120px',
+          transform: 'translateX(-50%)',
+        }}
+      >
+        إنضم ك{type}
+      </Button>
     </Wrapper>
   );
 };
