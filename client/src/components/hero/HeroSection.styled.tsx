@@ -8,7 +8,7 @@ export const HeroSectionWrapper = styled(Box)`
 `;
 
 // export const JoinButton = styled(Button)`
-  
+
 //   /* padding: 0.7rem 1.2rem; */
 //   /* border: 2px solid #fff; */
 //   /* color: #fff; */

@@ -1,6 +1,6 @@
 import React, { FC, ReactElement } from 'react';
 import { Button } from '@mui/material';
-import { JoinButton, Wrapper } from './HeroSection.styled';
+import { Wrapper } from './HeroSection.styled';
 import HeroDescription from './HeroDescription';
 
 interface Props {
