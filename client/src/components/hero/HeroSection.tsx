@@ -6,11 +6,11 @@ const HeroSection: FC = (): ReactElement => {
   return (
     <HeroSectionWrapper>
       <Hero
-        image="https://img.freepik.com/free-photo/soccer-players-action-professional-stadium_654080-1167.jpg?w=1060&t=st=1686716098~exp=1686716698~hmac=30d4ec020d1fca140a964c191c7b8f3f7a3491b204a2bcceea9194ae8b93f9bb"
+        image="https://store-images.s-microsoft.com/image/apps.2127.14621801316397473.3c7c0657-fe34-4727-8700-af9b251375de.193acee6-86b5-42a2-82f7-6ab2d5acea1a?mode=scale&q=90&h=1080&w=1920"
         type="لاعب"
       />
       <Hero
-        image="https://img.freepik.com/free-vector/gradient-football-field-background_23-2149013356.jpg?w=996&t=st=1686716249~exp=1686716849~hmac=44983025b068e317f467b57448e2077804449d021c8fc1f0418e3f9764659683"
+        image="https://www.wedemain.fr/wp-content/uploads/shutterstock_1299988534-870x600.jpg"
         type="ملعب"
       />
     </HeroSectionWrapper>
