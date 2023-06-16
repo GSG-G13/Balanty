@@ -8,8 +8,6 @@ interface Props {
 }
 
 const Hero: FC<Props> = ({ image, type }): ReactElement => {
-  console.log(image);
-
   return (
     <Wrapper imageUrl={image}>
       {type === 'ملعب' && (

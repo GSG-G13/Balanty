@@ -1,3 +1,5 @@
+export { default as BestStadiums } from './best-stadiums/BestStadiums';
+export { default as Header } from './header/Header';
 export { default as HeroSection } from './hero/HeroSection';
 export {
   StyledContainer,
@@ -40,4 +42,3 @@ export {
   StyledMnu,
   StyledLabel,
 } from './styledRootComponent/Nav';
-
