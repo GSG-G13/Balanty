@@ -1,3 +1,3 @@
 import getMatches from './matchesget';
 
-export  default getMatches;
+export default getMatches;
