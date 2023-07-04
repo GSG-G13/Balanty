@@ -177,7 +177,7 @@ describe('patch /api/v1/stadiums/edit', () => {
         phone: 'h0591234563',
         price: '750',
         ground: 'hانجيل',
-        address: 'hالزيتون',
+        address: 'الزيتون',
       })
       .end((err, res) => {
         expect(res.status).toBe(403);
@@ -208,7 +208,7 @@ describe('patch /api/v1/stadiums/edit', () => {
         phone: 'h0591234563',
         price: '750',
         ground: 'hانجيل',
-        address: 'hالزيتون',
+        address: 'الزيتون',
       })
       .end((err, res) => {
         expect(res.status).toBe(403);
@@ -238,7 +238,7 @@ describe('patch /api/v1/stadiums/edit', () => {
         phone: '0591234',
         price: '750',
         ground: 'hانجيل',
-        address: 'hالزيتون',
+        address: 'الزيتون',
       })
       .end((err, res) => {
         expect(res.status).toBe(200);

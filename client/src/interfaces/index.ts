@@ -29,3 +29,5 @@ export type {
   BioSectionProps,
   EditGalleryPopupProps,
 } from './StadiumProfile';
+
+export type { Page } from './landingPage';
