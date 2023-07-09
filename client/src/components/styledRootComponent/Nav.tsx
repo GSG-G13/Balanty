@@ -12,7 +12,6 @@ export const StyledNavBox = styled(Box)({
   height: '50px',
   left: 0,
   top: 0,
-  backgroundColor: '#01031C',
   borderBottom: '0.5px solid #000000',
   zIndex: '11',
 });
@@ -35,6 +34,12 @@ export const StyledSearchInput = styled(Input)({
   '& input': {
     textAlign: 'Right',
   },
+});
+
+export const StyledMnu = styled(GiHamburgerMenu)({
+  cursor: 'pointer',
+  fontSize: '25px',
+  marginRight: '70px',
 });
 
 export const StyledLabel = styled('label')({
