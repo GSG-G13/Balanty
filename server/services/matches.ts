@@ -1,11 +1,12 @@
 import { Op } from 'sequelize';
-import { CustomRequest, IServiceResponse } from '../interfaces';
+import { IServiceResponse } from '../interfaces';
 import { Gallery, Match, Stadium, User } from '../models';
 import { matchSchema } from '../validations';
 import { matchesInterface } from '../interfaces/matchInterfaces';
+import { Request } from 'express';
 
 export const createMatchService = async (
-  req: CustomRequest,
+  req: Request,
 ): Promise<IServiceResponse> => {
   const { body, user } = req;
   const ownerId = user?.id;
