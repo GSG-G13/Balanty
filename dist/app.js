@@ -41,7 +41,7 @@ app.use([
     (0, express_1.urlencoded)({ extended: false }),
     (0, compression_1.default)(),
     (0, cookie_parser_1.default)(),
-    (0, cors_1.default)(),
+    (0, cors_1.default)({ origin: 'http://localhost:5173/' }),
 ]);
 app.use('/api/v1', router_1.router);
 if (environment_1.nodeEnv === 'production') {
