@@ -17,7 +17,7 @@ const updatedPLayerSchema = joi_1.default.object({
     age: joi_1.default.number().allow(null).messages({
         'number.base': 'يجب أن يكون العمر رقمًا',
     }),
-    position: joi_1.default.string().min(3).max(10).allow(null).messages({
+    position: joi_1.default.string().min(3).max(25).allow(null).messages({
         'string.base': 'يجب أن يكون المركز نصًا',
         'string.min': 'يجب أن يحتوي نوع الارضية على الأقل {{#limit}} حروف',
         'string.max': 'يجب أن يحتوي نوع الارضية على الأكثر {{#limit}} حروف',

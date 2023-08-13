@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.JoinToMatchService = exports.getAllMatches = exports.createMatchService = void 0;
+exports.JoinToMatchService = exports.getMyMatchesService = exports.getAllMatches = exports.createMatchService = void 0;
 const sequelize_1 = require("sequelize");
 const models_1 = require("../models");
 const validations_1 = require("../validations");
@@ -65,6 +65,7 @@ const createMatchService = async (req) => {
 };
 exports.createMatchService = createMatchService;
 const getAllMatches = async (req) => {
+    const { search } = req.query;
     const currentDate = Date.now();
     const currentDateObject = new Date(currentDate);
     const currentDateFormatted = currentDateObject.toISOString();
@@ -74,10 +75,11 @@ const getAllMatches = async (req) => {
             [sequelize_1.Op.or]: [{ startDate: { [sequelize_1.Op.gt]: currentDateFormatted } }],
         },
         include: [
-            { model: models_1.User, as: 'ownerUser' },
+            { model: models_1.User, as: 'ownerUser', attributes: ['id', 'username', 'role'] },
             {
                 model: models_1.User,
                 as: 'stadiumMatch',
+                attributes: ['id', 'username', 'role'],
                 include: [
                     {
                         model: models_1.Stadium,
@@ -85,7 +87,11 @@ const getAllMatches = async (req) => {
                     },
                 ],
             },
-            { model: models_1.User, as: 'Players' },
+            {
+                model: models_1.User,
+                as: 'Players',
+                attributes: ['id', 'username', 'role'],
+            },
         ],
     });
     const playerMatches = await MatchPlayer_1.default.findAll({
@@ -93,11 +99,22 @@ const getAllMatches = async (req) => {
         attributes: ['matchId'],
     });
     if (matches.length > 0) {
-        return {
-            status: 200,
-            data: matches,
-            playerMatches,
-        };
+        console.log(matches[0].dataValues.Players);
+        if (search) {
+            const newMAtches = matches.filter(match => match.dataValues.title.includes(search));
+            return {
+                status: 200,
+                data: newMAtches,
+                playerMatches,
+            };
+        }
+        else {
+            return {
+                status: 200,
+                data: matches,
+                playerMatches,
+            };
+        }
     }
     else {
         return {
@@ -107,6 +124,36 @@ const getAllMatches = async (req) => {
     }
 };
 exports.getAllMatches = getAllMatches;
+const getMyMatchesService = async (req) => {
+    const userId = req.user?.id;
+    const matchesIds = await MatchPlayer_1.default.findAll({
+        where: {
+            userId,
+        },
+        attributes: ['matchId'],
+    });
+    const PlayerMatchesId = matchesIds.map(matchPlayer => matchPlayer.matchId);
+    const matches = await models_1.Match.findAll({
+        where: {
+            id: {
+                [sequelize_1.Op.in]: PlayerMatchesId,
+            },
+        },
+    });
+    if (matches.length > 0) {
+        return {
+            status: 200,
+            data: matches,
+        };
+    }
+    else {
+        return {
+            status: 404,
+            data: 'لا يوجد مباريات',
+        };
+    }
+};
+exports.getMyMatchesService = getMyMatchesService;
 const JoinToMatchService = async (req) => {
     const playerId = req.user?.id;
     const { matchId } = req.params;

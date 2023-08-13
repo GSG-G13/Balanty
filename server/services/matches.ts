@@ -66,9 +66,11 @@ export const createMatchService = async (
     data: '! هذا الوقت محجوز',
   };
 };
+
 export const getAllMatches = async (
   req: Request,
 ): Promise<matchesInterface> => {
+  const { search } = req.query;
   const currentDate = Date.now();
   const currentDateObject = new Date(currentDate);
   const currentDateFormatted = currentDateObject.toISOString();
@@ -78,10 +80,11 @@ export const getAllMatches = async (
       [Op.or]: [{ startDate: { [Op.gt]: currentDateFormatted } }],
     },
     include: [
-      { model: User, as: 'ownerUser' },
+      { model: User, as: 'ownerUser', attributes: ['id', 'username', 'role'] },
       {
         model: User,
         as: 'stadiumMatch',
+        attributes: ['id', 'username', 'role'],
         include: [
           {
             model: Stadium,
@@ -89,7 +92,11 @@ export const getAllMatches = async (
           },
         ],
       },
-      { model: User, as: 'Players' },
+      {
+        model: User,
+        as: 'Players',
+        attributes: ['id', 'username', 'role'],
+      },
     ],
   });
 
@@ -99,10 +106,56 @@ export const getAllMatches = async (
   });
 
   if (matches.length > 0) {
+    console.log(matches[0].dataValues.Players);
+    if (search) {
+      const newMAtches = matches.filter(match =>
+        match.dataValues.title.includes(search),
+      );
+      return {
+        status: 200,
+        data: newMAtches,
+        playerMatches,
+      };
+    } else {
+      return {
+        status: 200,
+        data: matches,
+        playerMatches,
+      };
+    }
+  } else {
+    return {
+      status: 404,
+      data: 'لا يوجد مباريات',
+    };
+  }
+};
+
+export const getMyMatchesService = async (
+  req: Request,
+): Promise<matchesInterface> => {
+  const userId = req.user?.id;
+
+  const matchesIds = await MatchPlayer.findAll({
+    where: {
+      userId,
+    },
+    attributes: ['matchId'],
+  });
+  const PlayerMatchesId = matchesIds.map(matchPlayer => matchPlayer.matchId);
+
+  const matches = await Match.findAll({
+    where: {
+      id: {
+        [Op.in]: PlayerMatchesId,
+      },
+    },
+  });
+
+  if (matches.length > 0) {
     return {
       status: 200,
       data: matches,
-      playerMatches,
     };
   } else {
     return {
