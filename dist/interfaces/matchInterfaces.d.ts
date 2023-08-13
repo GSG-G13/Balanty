@@ -24,6 +24,6 @@ export interface matchesInterface {
     status: number;
     data: (Match & {
         Stadium?: Stadium;
-    })[] | string;
+    })[] | string | Match;
     playerMatches?: MatchPlayer[];
 }

@@ -6,6 +6,7 @@ const utils_1 = require("../utils");
 const matchRouter = (0, express_1.Router)();
 matchRouter.get('/', (0, utils_1.errorWrapper)(controllers_1.getMatches));
 matchRouter.get('/my-matches', (0, utils_1.errorWrapper)(controllers_1.getMyMatches));
+matchRouter.get('/match-data/:matchId', controllers_1.getMatchData);
 matchRouter.post('/', (0, utils_1.errorWrapper)(controllers_1.createMatch));
 matchRouter.get('/search', (0, utils_1.errorWrapper)(controllers_1.searchMatches));
 matchRouter.get('/stadium/:stadiumId', (0, utils_1.errorWrapper)(controllers_1.getStadiumMatches));

@@ -35,6 +35,7 @@ const cors_1 = __importDefault(require("cors"));
 const router_1 = require("./routes/router");
 const errorMiddleware_1 = __importDefault(require("./middleware/errorMiddleware"));
 const utils_1 = require("./utils");
+const apiLimiter_1 = require("./middleware/apiLimiter");
 const app = (0, express_1.default)();
 app.use([
     (0, express_1.json)(),
@@ -44,6 +45,7 @@ app.use([
     (0, cors_1.default)({ origin: 'http://localhost:5173/' }),
 ]);
 app.use('/api/v1', router_1.router);
+app.use('/api/v1', apiLimiter_1.apiLimiter);
 if (environment_1.nodeEnv === 'production') {
     app.use(express_1.default.static((0, path_1.join)(__dirname, '..', 'client', 'dist')));
     app.get('*', (0, utils_1.errorWrapper)((req, res) => {

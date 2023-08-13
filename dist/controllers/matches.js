@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.searchMatches = exports.JoinToMatch = exports.getMyMatches = exports.getMatches = exports.createMatch = void 0;
+exports.searchMatches = exports.JoinToMatch = exports.getMatchData = exports.getMyMatches = exports.getMatches = exports.createMatch = void 0;
 const services_1 = require("../services");
 const createMatch = async (req, res) => {
     const data = (await (0, services_1.createMatchService)(req));
@@ -17,6 +17,11 @@ const getMyMatches = async (req, res) => {
     res.status(data.status).json(data);
 };
 exports.getMyMatches = getMyMatches;
+const getMatchData = async (req, res) => {
+    const data = await (0, services_1.getMatchDataService)(req);
+    res.status(data.status).json(data);
+};
+exports.getMatchData = getMatchData;
 const JoinToMatch = async (req, res) => {
     const data = await (0, services_1.JoinToMatchService)(req);
     res.status(data.status).json(data);
