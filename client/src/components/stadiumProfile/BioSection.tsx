@@ -52,7 +52,7 @@ const BioSection = ({
 
   const getReview = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/review/${id}`);
+      const { data } = await axios.get(`/api/v1/review/${userData.Stadium.id}`);
       setRatingArray(data.data);
     } catch (error) {
       navigate('/serverError');
@@ -116,7 +116,9 @@ const BioSection = ({
 
   const getPlayerReview = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/review/player/${id}`);
+      const { data } = await axios.get(
+        `/api/v1/review/player/${userData.Stadium.id}`,
+      );
       setPlayerRating(data.data ? data.data.value : 0);
     } catch (error) {
       navigate('/serverError');
