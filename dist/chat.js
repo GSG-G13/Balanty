@@ -10,7 +10,14 @@ const services_1 = require("./services");
 const server = (0, http_1.createServer)(app_1.default);
 const io = new socket_io_1.Server(server, {
     cors: {
-        origin: 'http://localhost:5173',
+        origin: (ori, callback) => {
+            if (/^http:\/\/localhost(:\d+)?$/.test(ori)) {
+                callback(null, true);
+            }
+            else {
+                callback(new Error('Not allowed by CORS'));
+            }
+        },
         methods: '*',
     },
 });
